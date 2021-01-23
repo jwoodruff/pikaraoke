@@ -27,7 +27,7 @@ except ImportError:
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-site_name = "PiKaraoke"
+site_name = "Baráge"
 admin_password = None
 
 def filename_from_path(file_path, remove_youtube_id=True):
@@ -55,9 +55,13 @@ def is_admin():
             return True
     return False
 
-
 @app.route("/")
 def home():
+    return render_template(
+        "landing_page.html"
+    )
+@app.route("/karaoke")
+def sing():
     return render_template(
         "home.html",
         site_title=site_name,
